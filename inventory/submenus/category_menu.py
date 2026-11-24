@@ -1,5 +1,8 @@
 # Funcion Menu Categoria - CRUD
 
+from inventory.services.category_services import listar_categorias
+
+
 def category_menu():
     while True:
         
@@ -16,8 +19,19 @@ def category_menu():
         match opc:
             case "1":
                 pass
+            
             case "2":
-                pass
+                # Me traigo el dict de services
+                categorias_copia = listar_categorias()
+                
+                # Muestro el dict, ya sea que es vacío o no
+                if not categorias_copia:
+                    print("No existen categorías guardadas.")
+                else:
+                    print("------ Lista de categorias -----")
+                    for k, v in categorias_copia.items():
+                        print(f'{k} - {v.name}')
+                        
             case "3":
                 pass
             case "4":
@@ -27,3 +41,4 @@ def category_menu():
                 break
             case _:
                 print("Opcion inválida. Intente nuevamente!")
+                
