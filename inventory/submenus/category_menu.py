@@ -1,12 +1,12 @@
 # Funcion Menu Categoria - CRUD
 
-from inventory.services.category_services import listar_categorias
+from inventory.services.category_services import create_category, list_categories
 
 
 def category_menu():
     while True:
         
-        print('_____ Menu Categoria ____\n')
+        print('\n_____ Menu Categoria ____\n')
         print('Seleccione una opción: ')
         print('1 - Crear Categoria')
         print('2 - Listar Categoria')
@@ -18,18 +18,19 @@ def category_menu():
         
         match opc:
             case "1":
-                pass
+                new_name = input("\nIngrese el nombre de la categoria que desea agregar: ") #Falta validar str!!
+                create_category(new_name)
             
             case "2":
                 # Me traigo el dict de services
-                categorias_copia = listar_categorias()
+                categories_copy = list_categories()
                 
                 # Muestro el dict, ya sea que es vacío o no
-                if not categorias_copia:
+                if not categories_copy:
                     print("No existen categorías guardadas.")
                 else:
                     print("------ Lista de categorias -----")
-                    for k, v in categorias_copia.items():
+                    for k, v in categories_copy.items():
                         print(f'{k} - {v.name}')
                         
             case "3":

@@ -1,0 +1,1 @@
+max(categorias.keys(), 0)
